@@ -1,34 +1,69 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
-const vscode = require('vscode');
+const vscode = require('vscode')
+import { Order, Customer, Item, Payment, NearbyStores, Tracking } from 'dominos';
 
-// this method is called when your extension is activated
-// your extension is activated the very first time the command is executed
+// runs once when extension is activated
+const activate = context => {
+	// command handler to place an order
+	let disposable = vscode.commands.registerCommand('dominos-pizza-order.placeOrder', async () => {
+		
+		// get customer
+		let customer = await getCustomer()
 
-/**
- * @param {vscode.ExtensionContext} context
- */
-function activate(context) {
+		// get closes store
+		let store = await getClosestStore(customer)
 
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
-	console.log('Congratulations, your extension "dominos-pizza-order" is now active!');
+		// get order items
+		let items = await getItems()
 
-	// The command has been defined in the package.json file
-	// Now provide the implementation of the command with  registerCommand
-	// The commandId parameter must match the command field in package.json
-	let disposable = vscode.commands.registerCommand('dominos-pizza-order.helloWorld', function () {
-		// The code you place here will be executed every time your command is executed
+		// get order
+		let order = await getOrder(customer, items)
 
-		// Display a message box to the user
-		vscode.window.showInformationMessage('Hello World from Dominos Pizza Order!');
+		// get payment
+		let payment = await getPayment()
+
+		// place order
+		order.place()
+
+		vscode.window.showInformationMessage('TEST!')
 	});
 
-	context.subscriptions.push(disposable);
+	context.subscriptions.push(disposable)
 }
 
-// this method is called when your extension is deactivated
-function deactivate() {}
+// returns the customer
+const getCustomer = async () => {
+
+}
+
+// returns the closest store
+const getClosestStore = async customer => {
+
+}
+
+// returns the items
+const getItems = async () => {
+
+}
+
+// returns the order
+const getOrder = async (items) => {
+	// add items to order
+	items.forEach(item => {
+		addItemToOrder(item)
+	});
+}
+
+// adds item to order
+const addItemToOrder = () => {
+
+}
+
+// returns the payment
+const getPayment = () => {
+
+}
+
+const deactivate = () => {}
 
 module.exports = {
 	activate,

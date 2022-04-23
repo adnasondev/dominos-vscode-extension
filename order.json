@@ -1,0 +1,17 @@
+{
+  "customer": {
+    "address": "4700 Westgrove Street APT 1112, Raleigh, NC, 27606",
+    "firstName": "Austin",
+    "lastName": "Nason",
+    "phone": "910-318-3672",
+    "email": "adnason@ncsu.edu"
+  },
+  "payment": {
+    "amount": "0",
+    "number": "0",
+    "expiration": "0",
+    "securityCode": "0",
+    "postalCode": "0",
+    "tipAmount": ""
+  }
+}
